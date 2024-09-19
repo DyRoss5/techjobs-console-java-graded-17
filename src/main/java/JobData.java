@@ -91,19 +91,15 @@ public class JobData {
         loadData();
 
         ArrayList<HashMap<String, String>> resultSet = new ArrayList<>();
-
-        for (HashMap<String, String> job : allJobs) {
-            for (String key : job.keySet()) {
-                String aValue = job.get(key);
-                if (aValue != null && aValue.toLowerCase().contains(value.toLowerCase())) {
-                        resultSet.add(job);
-                        break;
-                    }
-                //}
+        for(HashMap<String, String> job : allJobs){
+            for(Map.Entry<String, String> entry : job.entrySet()){
+                String aValue = entry.getValue();
+                if(aValue != null && aValue.toLowerCase().contains(value.toLowerCase())){
+                    resultSet.add(job);
+                    break;
+                }
             }
         }
-
-        // TODO - implement this method
         return resultSet;
     }
 
